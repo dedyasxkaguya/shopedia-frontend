@@ -1,0 +1,8 @@
+*{
+  font-family: 'Raleway' ;
+}
+.product-image{
+  max-height: 20dvh;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
