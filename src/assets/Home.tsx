@@ -43,12 +43,17 @@ const Home = () => {
                 {products.map((p) => {
                     // const cartLink : string = 'http://127.0.0.1:8000/api/cart/add'
                     // const productTitle:string = `product${p.id}`
-                    const link: string = `product/${p.id}`
+                    let imageElem = p.image;
+                    const link: string = `/product/${p.id}`
                     const data = {
                         name: p.title,
                         user_id: id,
                         price: p.price,
-                        category: p.category
+                        category: p.category,
+                        image : imageElem
+                    }
+                    if(p.category=='local'){
+                        imageElem = `http://127.0.0.1:8000/images/${imageElem}`
                     }
                     const handleAdd = () => {
                         axios.post("http://127.0.0.1:8000/api/cart/add", data)
@@ -56,16 +61,17 @@ const Home = () => {
                     }
                     return (
                         <div className="shadow-lg p-2 rounded-2xl border-2 flex flex-col justify-between gap-1" key={p.id}>
-                            <img src={p.image} alt="" className=
+                            <img src={imageElem} alt="" className=
                                 'product-image bg-neutral-50   rounded-xl'
                             />
                             <div className="">
                                 <span>
                                     {p.rating_rate}
                                     <i className="
-                                    bi bi-star-fill text-xs text-yellow-400"></i>
+                                    bi bi-star-fill  text-xs text-yellow-400"></i>
                                 </span>
                                 <span>({p.rating_count})</span>
+                                <span>{p.category}</span>
                             </div>
                             <p className='text-sm truncate'>{p.title}</p>
                             {/* <p>Only ${p.price}</p> */}

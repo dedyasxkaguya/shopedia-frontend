@@ -16,7 +16,7 @@ const Login = () => {
             axios.post("http://127.0.0.1:8000/api/user/login", data)
                 .then(data => {
                     const fetched = data.data
-                    if(!fetched.status){
+                    if (!fetched.status) {
                         console.log("akun tidak ditemukan")
                         return
                     }

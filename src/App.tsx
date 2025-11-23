@@ -5,15 +5,17 @@ import Show from './assets/Show'
 import Login from './assets/Login'
 import Register from './assets/Register'
 import Cart from './assets/Cart'
+import Product from './assets/Product'
 
 const App = () => {
   return (
     <Routes>
-      <Route path='/home/:id' element={<Home/>}/>
-      <Route path='/product/:id' element={<Show/>}/>
-      <Route path='/user/login' element={<Login/>}/>
-      <Route path='/user/register' element={<Register/>}/>
-      <Route path='/user/cart/:id' element={<Cart/>}/>
+      <Route path='/home/:id' element={<Home />} />
+      <Route path='/product/:id' element={<Show />} />
+      <Route path='/user/login' element={<Login />} />
+      <Route path='/user/register' element={<Register />} />
+      <Route path='/user/cart/:id' element={<Cart />} />
+      <Route path='/product/add' element={<Product />} />
     </Routes>
   )
 }
