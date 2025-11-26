@@ -1,6 +1,11 @@
 *{
   font-family: 'Raleway' ;
 }
+#hero {
+  height: 100dvh;
+  width: 100dvw;
+  background-image: linear-gradient(135deg , #ffefa0 , #ffb49f);
+}
 .product-image{
   max-height: 20dvh;
   aspect-ratio: 3/2;

@@ -31,7 +31,7 @@ const Cart = () => {
                     imageElem = `http://127.0.0.1:8000/images/${p.image}`
                 }
                 return (
-                    <div className="p-2 rounded-xl border-1 m-4 flex gap-4">
+                    <div className="p-2 rounded-xl borderm-4 flex gap-4">
                         <img src={imageElem} alt="" className='w-50'/>
                         <div className="">
                             <p>{p.name} x{p.quantities} | {p.category}</p>
