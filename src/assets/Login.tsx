@@ -42,6 +42,14 @@ const Login = () => {
             })
         }
     }
+    const handleGoogle = () => {
+            Swal.fire({
+                icon:'info',
+                title:'sorry',
+                text:"This feature hasnt added yet",
+                confirmButtonText:"Okay i get it"
+            })
+        }
     return (
         <div className='flex justify-center items-center h-[100dvh]'>
             <form action="" className='border border-black flex flex-col gap-4 p-4 rounded-2xl overflow-hidden'>
@@ -59,7 +67,7 @@ const Login = () => {
                 {/* <input type="submit" value="Login" onClick={()=>handleLogin()}/> */}
                 <button type="button" onClick={() => handleLogin()} className='p-2 text-neutral-50 bg-neutral-800 rounded-lg duration-500 shadow-md hover:opacity-80'>Login</button>
                 <span className='text-center text-xs'>OR</span>
-                <button type="button" onClick={() => handleLogin()} className='p-2 text-neutral-800 bg-neutral-50 border border-neutral-800 rounded-lg duration-500 shadow-md  hover:text-neutral-50 hover:bg-neutral-800'>
+                <button type="button" onClick={() => handleGoogle()} className='p-2 text-neutral-800 bg-neutral-50 border border-neutral-800 rounded-lg duration-500 shadow-md  hover:text-neutral-50 hover:bg-neutral-800' >
                     <i className="bi bi-google mx-2"></i>
                     Google
                 </button>
