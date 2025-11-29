@@ -16,21 +16,37 @@ const Register = () => {
         }
         axios.post("http://127.0.0.1:8000/api/user/register", data)
             .then(data => {
-                if (!data.data.status) {
-                    console.log(data.data.message)
-                    console.log(data.data)
+                const fetched = data.data
+                if (!fetched.status) {
+                    console.log(fetched.message)
+                    if(fetched.data.errorInfo[2].includes('Duplicate')){
+                        Swal.fire({
+                            icon:'error',
+                            title:'error',
+                            text:'This email is already registered'
+                        })
+                    }
                     return
                 }
-                console.log(data.data.message)
-                // location.href = '/'
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'You have register to Shopedia'
+                })
+                // console.table(fetched)
+                // console.log(fetched.data.id)
+                setTimeout(() => {
+                    location.href = `/home/${fetched.data.id}`
+                }, 2000);
             })
     }
     const handleGoogle = () => {
         Swal.fire({
-            icon:'info',
-            title:'sorry',
-            text:"This feature hasnt added yet",
-            confirmButtonText:"Okay i get it"
+            icon: 'info',
+            title: 'sorry',
+            text: "This feature hasnt added yet",
+            confirmButtonText: "Okay i get it"
         })
     }
     return (
@@ -48,7 +64,7 @@ const Register = () => {
                 <button type="button" onClick={() => handleRegister()}
                     className='p-2 text-neutral-50 bg-neutral-800 rounded-lg duration-500 shadow-md hover:opacity-80'>Register</button>
                 <span className='text-xs text-center'>OR</span>
-                <button type="button" className='p-2 text-neutral-800 bg-neutral-50 border border-neutral-800 rounded-lg duration-500 shadow-md  hover:text-neutral-50 hover:bg-neutral-800' onClick={()=>handleGoogle()}>
+                <button type="button" className='p-2 text-neutral-800 bg-neutral-50 border border-neutral-800 rounded-lg duration-500 shadow-md  hover:text-neutral-50 hover:bg-neutral-800' onClick={() => handleGoogle()}>
                     <i className="bi bi-google mx-2"></i>
                     Google
                 </button>

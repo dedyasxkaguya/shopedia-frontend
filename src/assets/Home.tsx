@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 // import image from '../../public/pm.jpg'
 import { Link, useParams } from 'react-router-dom'
@@ -49,28 +49,31 @@ const Home = () => {
     }
     return (
         <div className='p-4'>
-            <div className="flex justify-between">
+            <div className="flex justify-between p-2 items-center">
                 <div className="flex">
                     <div className="">
                         <i className="bi bi-list cursor-pointer mx-2" onClick={() => handleMenu()}></i>
                         <div id="dropdown" className='shadow rounded-lg overflow-hidden'>
                             <div
                                 className=" duration-500 p-2 cursor-pointer hover:bg-neutral-800 hover:text-neutral-50 ">
+                                <Link to={'/'}>
                                     <i className='bi bi-box-arrow-left me-2'></i>
                                     Logout
-                                </div>
+                                </Link>
+                            </div>
                             <div
                                 className=" duration-500 p-2 cursor-pointer hover:bg-neutral-800 hover:text-neutral-50 ">
-                                    <i className='bi bi-person me-2'></i>
-                                    Profile
-                                </div>
+                                <i className='bi bi-person me-2'></i>
+                                Profile
+                            </div>
                             <div
                                 className=" duration-500 p-2 cursor-pointer hover:bg-neutral-800 hover:text-neutral-50 ">
-
-                                </div>
+                                <i className='bi bi-plus'></i>
+                                Add Product
+                            </div>
                         </div>
                     </div>
-            <h1 className='font-semibold'>Hello {id} {user?.name}</h1>
+                    <h1 className='font-semibold'>Hello {user?.name}</h1>
 
                 </div>
                 <Link to={`/user/cart/${id}`} className='bg-[#ffb49f] text-white p-2 rounded-lg'>

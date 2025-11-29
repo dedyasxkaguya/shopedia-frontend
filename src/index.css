@@ -2,6 +2,7 @@
   font-family: 'Raleway' ;
 }
 body{
+  height: 100dvh !important;
   overflow-x: hidden;
 }
 #hero {
@@ -16,7 +17,7 @@ body{
   left: 0;
   z-index: 9;
   width: 24dvw;
-  height: 100px;
+  height: 10dvw;
   /* background-color: white !important; */
   background-image: linear-gradient(to right , #ffefa0 , transparent);
 }
@@ -26,7 +27,7 @@ body{
   right: 0;
   z-index: 9;
   width: 24dvw;
-  height: 100px;
+  height: 10dvw;
   /* background-color: white !important; */
   background-image: linear-gradient(to left , #ffb49f , transparent);
 }
@@ -73,4 +74,18 @@ body{
   100%{
     right: -64%;
   }
+}
+/* // */
+
+.cart-image{
+  /* background: #000; */
+  width: 10dvw;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+.shadowall{
+  box-shadow: 2px 16px 24px 2px;
+  position: fixed;
+  bottom: 0;
+  backdrop-filter: blur(4px);
 }

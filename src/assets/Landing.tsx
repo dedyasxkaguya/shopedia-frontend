@@ -38,18 +38,18 @@ const Landing = () => {
                         Register
                     </Link>
                 </div>
+                <span>Find so many products</span>
                 <div className="scroll my-8">
-                    <span>Find so many products</span>
                     <div className="flex gap-4 scroll">
                         <div className="scrollImages flex gap-4">
 
-                        {/* <div className="sideScroll"></div> */}
-                        {product?.map((a)=>{
-                            return(
-                                <img src={a.image} alt="" className="landingImage bg-neutral-50 p-2 opacity-70 rounded-2xl"/>
-                            )
-                        })}
-                        {/* <div className="sideScroll"></div> */}
+                            {/* <div className="sideScroll"></div> */}
+                            {product?.map((a) => {
+                                return (
+                                    <img src={a.image} alt="" className="landingImage bg-neutral-50 p-2 opacity-70 rounded-2xl" />
+                                )
+                            })}
+                            {/* <div className="sideScroll"></div> */}
 
                         </div>
                     </div>

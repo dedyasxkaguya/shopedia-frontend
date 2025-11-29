@@ -15,6 +15,7 @@ const Cart = () => {
     //     name:string
     // }
     const [products, setProducts] = useState<Product[]>([])
+    let totalPrice: number = 0
     useEffect(() => {
         axios.get<Product[]>(`http://127.0.0.1:8000/api/cart/user/${id}`)
             .then(data => {
@@ -23,6 +24,10 @@ const Cart = () => {
                 setProducts(fetched)
             })
     }, [])
+    products.map((p) => {
+        totalPrice += (p.price * p.quantities)
+        console.log(p.price)
+    })
     return (
         <div className='flex flex-col justify-between h-[100dvh]'>
             <div className="">
@@ -34,35 +39,39 @@ const Cart = () => {
                     {/* <span className='text-2xl font-semibold'>Dedyas</span> */}
                     <span className='text-xl font-semibold'>Cart</span>
                 </div>
-            {products.map((p) => {
-                let imageElem = p.image
-                    if (p.category == 'local') {
-                    imageElem = `http://127.0.0.1:8000/images/${p.image}`
-                }
-                return (
-                    <div className="p-2 rounded-xl borderm-4 flex gap-4">
-                            <img src={imageElem} alt="" className='w-50' />
-                        <div className="">
-                            <p>{p.name} x{p.quantities} | {p.category}</p>
-                            <p>price {p.price} x{p.quantities} </p>
-                            <p>${(p.price) * (p.quantities)}</p>
-                        </div>
-                    </div>
-                )
-            })}
+                <div className="flex flex-col gap-4 p-4">
+                    {products.map((p) => {
+                        let imageElem = p.image
+                        if (p.category == 'local') {
+                            imageElem = `http://127.0.0.1:8000/images/${p.image}`
+                        }
+                        return (
+                            <div className="p-2 rounded-xl borderm-4 flex gap-4 shadow w-[80dvw]">
+                                <div className="p-2 shadow-xl rounded-xl">
+                                    <img src={imageElem} alt="" className='w-50 cart-image' />
+                                </div>
+                                <div className="">
+                                    <p>{p.name} x{p.quantities} | {p.category}</p>
+                                    <p>price {p.price} x{p.quantities} </p>
+                                    <p>${(p.price) * (p.quantities)}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
-            <div className="flex shadowall p-4 gap-2 items-center justify-between">
+            <div className="flex shadowall p-4 gap-2 items-center justify-between mt-8 w-[100dvw]">
                 {/* <label htmlFor="" className='font-semibold'>Select All
                     <input type="checkbox" name="" id="" className='mx-2' />
                 </label> */}
                 <div className="flex gap-4 items-center">
                     <span className='font-bold text-2xl'>Total</span>
-                    <span>$6767</span>
+                    <span>${totalPrice}</span>
                 </div>
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-4 items-center me-4">
                     <span className='font-light opacity-75'>67% Discount</span>
                     <button type="button" className='bg-[#ffb49f] p-2 text-black rounded-lg text-xl'>
-                        Buy now (1)
+                        Buy now ({products.length})
                     </button>
                 </div>
             </div>
