@@ -2,12 +2,44 @@
   font-family: 'Raleway' ;
 }
 body{
-  height: 300dvh;
+  overflow-x: hidden;
 }
 #hero {
   height: 100dvh;
   width: 100dvw;
-  background-image: linear-gradient(135deg , #ffefa0 , #ffb49f);
+  /* background-image: linear-gradient(135deg , #ffefa0 , #ffb49f); */
+  background-image: linear-gradient(to right, #ffefa0 , #ffb49f);
+}
+.scroll::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  width: 24dvw;
+  height: 100px;
+  /* background-color: white !important; */
+  background-image: linear-gradient(to right , #ffefa0 , transparent);
+}
+.scroll::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  width: 24dvw;
+  height: 100px;
+  /* background-color: white !important; */
+  background-image: linear-gradient(to left , #ffb49f , transparent);
+}
+.scrollImages{
+  animation: scroll;
+  position: relative;
+  right: -64%;
+  animation: scrollAnim 64s linear forwards;
+}
+.landingImage { 
+  aspect-ratio: 1/1;
+  max-width: 10dvw;
+  object-fit: contain;
 }
 .product-image{
   max-height: 20dvh;
@@ -32,4 +64,13 @@ body{
   opacity: 0;
   transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: -9;
+}
+
+@keyframes scrollAnim {
+  50%{
+    right: 100%;
+  }
+  100%{
+    right: -64%;
+  }
 }
