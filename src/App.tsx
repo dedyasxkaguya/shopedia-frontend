@@ -7,6 +7,7 @@ import Register from './assets/Register'
 import Cart from './assets/Cart'
 import Product from './assets/Product'
 import Landing from './assets/Landing'
+import Profile from './assets/Profile'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/user/register' element={<Register />} />
       <Route path='/user/cart/:id' element={<Cart />} />
       <Route path='/product/add' element={<Product />} />
+      <Route path='/profile/:id' element={<Profile />} />
     </Routes>
   )
 }

@@ -18,10 +18,12 @@ const Home = () => {
     interface User {
         name: string
         id: number
+        image: string
     }
     const [products, setData] = useState<Product[]>([])
     const [user, setUser] = useState<User>()
     const [menu, isMenu] = useState(false)
+    const [profile_images, setImage] = useState<string>()
     useEffect(() => {
         axios.get<Product[]>("http://127.0.0.1:8000/api/products")
             // axios.get<Product[]>("https://fakestoreapi.com/")
@@ -31,7 +33,10 @@ const Home = () => {
         axios.get(`http://127.0.0.1:8000/api/user/${id}`)
             .then(data => {
                 const fetched = data.data
+                // console.log(fetched)
+                const image = `http://127.0.0.1:8000/images/${fetched.image}`
                 setUser(fetched)
+                setImage(image)
             })
     }, [])
     const handleMenu = () => {
@@ -63,8 +68,10 @@ const Home = () => {
                             </div>
                             <div
                                 className=" duration-500 p-2 cursor-pointer hover:bg-neutral-800 hover:text-neutral-50 ">
-                                <i className='bi bi-person me-2'></i>
-                                Profile
+                                <Link to={`/profile/${user?.id}`}>
+                                    <i className='bi bi-person me-2'></i>
+                                    Profile
+                                </Link>
                             </div>
                             <div
                                 className=" duration-500 p-2 cursor-pointer hover:bg-neutral-800 hover:text-neutral-50 ">
@@ -73,7 +80,10 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <h1 className='font-semibold'>Hello {user?.name}</h1>
+                    <div className="flex items-center gap-4">
+                        <img src={profile_images} alt="" className='rounded-full w-[2dvw]' />
+                        <h1 className='font-semibold'> {user?.name}</h1>
+                    </div>
 
                 </div>
                 <Link to={`/user/cart/${id}`} className='bg-[#ffb49f] text-white p-2 rounded-lg'>
